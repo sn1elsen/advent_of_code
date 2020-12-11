@@ -4,17 +4,14 @@ import re
 import sys
 
 data = []
-
 for line in sys.stdin:
     data.append(line.rstrip())
 
-# 15-16 g: sggggggggqgclgggmggw
-
 valid = 0
-for i in data:
-    (r1, r2, char, passwd) = re.match('^([0-9]{1,})\-([0-9]{1,})\s+([a-z]):\s+(.*)$', i).groups()
+for line in data:
+    (pos1, pos2, char, passwd) = re.split(r'[-: ]+', line)
     count = passwd.count(char)
-    if count >= int(r1) and count <= int(r2):
+    if count >= int(pos1) and count <= int(pos2):
         valid += 1
 
 print("valid %s" % valid)
