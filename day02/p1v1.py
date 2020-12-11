@@ -12,9 +12,9 @@ for line in sys.stdin:
 
 valid = 0
 for i in data:
-    pieces = re.match('^([0-9]{1,})\-([0-9]{1,})\s+([a-z]):\s+(.*)$', i).groups()
-    count = pieces[3].count(pieces[2])
-    if count >= int(pieces[0]) and count <= int(pieces[1]):
+    (r1, r2, char, passwd) = re.match('^([0-9]{1,})\-([0-9]{1,})\s+([a-z]):\s+(.*)$', i).groups()
+    count = passwd.count(char)
+    if count >= int(r1) and count <= int(r2):
         valid += 1
 
 print("valid %s" % valid)
