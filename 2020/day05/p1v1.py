@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import math
 import sys
 
 def get_seat(region):
@@ -29,6 +28,11 @@ def get_seat(region):
     return seat_id
 
 
+seat_ids = []
 for line in sys.stdin:
     line.rstrip()
-    print(get_seat(line))
+    seat_ids.append(get_seat(line))
+
+seat_ids.sort(reverse=True) 
+
+print("highest seat id %s" % seat_ids[0])

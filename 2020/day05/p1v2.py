@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import math
 import sys
 
 def get_seat(region):
